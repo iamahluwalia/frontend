@@ -12,7 +12,7 @@ const PaperContainer = (props) => {
         code: "",
         date: "",
         avgrating: 0,
-        ratings: [],
+        tags: [],
         downloads: 0,
         base64_file: "",
     })
@@ -40,7 +40,7 @@ const PaperContainer = (props) => {
     function setTags(tags) {
       let str = tags.toLowerCase();
       let arr = str.split(" ");
-      setFile({...file, ratings: arr});
+      setFile({...file, tags: arr});
     }
 
     function sendOTP() {
@@ -81,6 +81,7 @@ const PaperContainer = (props) => {
         <input type="radio" checked={!file.endsem} classsName="form-control" id="form1" value={false} onChange={(e) => setFile({...file, endsem: false})} />        
         Midsem
         </label>
+        <br />
         <button type="button" className="btn btn-primary" onClick={() => sendOTP()} style={{
             marginLeft: 5
           }}>

@@ -1,6 +1,7 @@
 .Main-App {
   text-align: center;
-  background-image: url('./nit.png');
+  background-image: url('./college.jpg');
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;

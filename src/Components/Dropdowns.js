@@ -5,8 +5,10 @@ import "./Dropdowns.css"
 import Search from "./Search";
 import axios from 'axios'
 import {connect} from 'react-redux'
+import { useAlert } from 'react-alert'
 
 const Dropdowns = (props) => {
+  const alert = useAlert();
   let [search_query, set_search_query] = React.useState({
     branch: "",
     endsem: null,
@@ -20,6 +22,9 @@ const Dropdowns = (props) => {
     }
       axios.post("http://localhost:6969/search", search_query).then(async (res) => {
         await props.setQuery(res.data)
+        if(res.data.length === 0) alert.error(`Found ${res.data.length} Files!`)
+        else if(res.data.length === 1) alert.success(`Found ${res.data.length} File!`)
+        else alert.success(`Found ${res.data.length} Files!`)
       })
   }
 
@@ -65,14 +70,30 @@ const Dropdowns = (props) => {
           }}>
             <span>Search</span>
           </button>
-          <button onClick={() => Upload()} type="button" className="btn btn-secondary" style={{
-            marginLeft: 5
-          }}>
-            <span>Upload</span>
-          </button>
+          {
+            !props.is_upload ?
+            <button onClick={() => Upload()} type="button" className="btn btn-secondary" style={{
+              marginLeft: 5
+            }}>
+              <span>Upload</span>
+            </button>
+            :
+            <button onClick={() => props.setUpload(false)} type="button" className="btn btn-secondary" style={{
+              marginLeft: 5,
+              backgroundColor: 'red'
+            }}>
+              <span>Close</span>
+            </button>
+          }
       </div>
   );
 };
+
+const mapStateToProps = (state) => {
+  return {
+    is_upload: state.is_upload
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -81,4 +102,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(undefined, mapDispatchToProps)(Dropdowns);
+export default connect(mapStateToProps, mapDispatchToProps)(Dropdowns);

@@ -32,7 +32,7 @@ function MyApp(props) {
   
     return (
       <div>
-        <button className="btn btn-primary" onClick={() => props.unsetFile()} >Close</button>
+        <button className="btn btn-primary" style={{backgroundColor: 'red'}} onClick={() => props.unsetFile()} >Close</button>
         <a onClick={() => handleDownload()} download={"pdf-title"} href={`data:application/pdf;base64,${props.sel.base64_file}`} title='Download pdf document'>
           Download
         </a>
