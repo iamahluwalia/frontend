@@ -33,7 +33,7 @@ function MyApp(props) {
     return (
       <div>
         <button className="btn btn-primary" style={{backgroundColor: 'red'}} onClick={() => props.unsetFile()} >Close</button>
-        <a onClick={() => handleDownload()} download={"pdf-title"} href={`data:application/pdf;base64,${props.sel.base64_file}`} title='Download pdf document'>
+        <a className="btn btn-primary" style={{backgroundColor: 'green'}} onClick={() => handleDownload()} download={"pdf-title"} href={`data:application/pdf;base64,${props.sel.base64_file}`} title='Download pdf document'>
           Download
         </a>
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
@@ -48,7 +48,7 @@ function MyApp(props) {
         </div>
         <span>{`${props.sel.downloads} downloads`}</span>
         <PDFViewer
-            document={{url: `data:application/pdf;base64,${props.sel.base64_file}` }}
+            document={{url: `${props.sel.base64_file}` }}
         />
         <br />
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} >

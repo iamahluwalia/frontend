@@ -11,13 +11,13 @@ const Dropdowns = (props) => {
   const alert = useAlert();
   let [search_query, set_search_query] = React.useState({
     branch: "",
-    endsem: null,
+    type: "",
     query: "",
   })
 
   function Search() {
     console.log(search_query)
-    if(search_query.branch === "" && search_query.endsem === null && search_query.query === "") {
+    if(search_query.branch === "" && search_query.type === "" && search_query.query === "") {
       return
     }
       axios.post("http://localhost:6969/search", search_query).then(async (res) => {
@@ -34,7 +34,7 @@ const Dropdowns = (props) => {
  
 
   const options1 = ["CS", "ECE", "MECH", "PIE", "IT", "EE"];
-  const options2 = ["Midsem", "Endsem"];
+  const options2 = ["Midsem", "Endsem", "Notes", "Book Recommendations"];
   const Branch = "Branch";
   const Sem = "Sem";
   return (
@@ -54,7 +54,7 @@ const Dropdowns = (props) => {
         <div className="dropdown-comp">
           <Dropdown controlClassName="drop"
             options={options2}
-            onChange={(e) => set_search_query({...search_query, endsem: (e.value === "Endsem" ? true : false)})}
+            onChange={(e) => set_search_query({...search_query, type: e.value})}
             value={Sem}
             placeholder="Select an option"
             placeholderClassName="dropdown-text"

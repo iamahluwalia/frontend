@@ -4,7 +4,7 @@ import React from "react";
 const Search = () => {
   let [search_query, set_search_query] = React.useState({
     branch: "",
-    endsem: null,
+    type: "",
     query: "",
   })
 
