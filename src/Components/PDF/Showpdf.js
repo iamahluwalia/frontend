@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
+import './Showpdf.css'
 import PDFViewer from 'pdf-viewer-reactjs'
 import ReactStars from "react-rating-stars-component";
 import axios from 'axios';
 import { connect } from 'react-redux';
+import CustomNavigation from './Navigation';
+import Swal from 'sweetalert2'
 
 
 function MyApp(props) {
@@ -26,7 +29,14 @@ function MyApp(props) {
       email: email,
       _id: props.sel._id
     }).then((res) => {
-      console.log(res)
+        if(res.status === 200) {
+          return Swal.fire({
+            title: 'Done!',
+            text: 'Rating Updated Successfully',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+          })
+        }
     })
   }
   
@@ -47,9 +57,17 @@ function MyApp(props) {
         />
         </div>
         <span>{`${props.sel.downloads} downloads`}</span>
+        <div style={{borderWidth: 5, borderColor: 'black'}} >
         <PDFViewer
             document={{url: `${props.sel.base64_file}` }}
+            // document={{ url: "https://arxiv.org/pdf/quant-ph/0410100.pdf" }}
+            navigation={CustomNavigation}
+            scale={1.5}
+            scaleStep={0.5}
+            maxScale={5}
+            minScale={0.5}
         />
+        </div>
         <br />
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
         <ReactStars
