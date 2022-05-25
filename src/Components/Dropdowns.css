@@ -4,7 +4,7 @@
 
 .dropdown-text {
     font-size: large;
-    color: white;
+    color: black;
 }
 .dropdown-container{
     display: flex;
@@ -20,12 +20,12 @@
 .drop{
     width: 20vw;
     border-radius: 15px;
-    border: solid 3px white;
+    border: solid 3px black;
     background: transparent;
 }
 
 .dropdown-arrow {
-    border-color: white transparent transparent;
+    border-color: black transparent transparent;
 }
 
 /* .dropdown-menu {

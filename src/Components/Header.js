@@ -4,7 +4,7 @@ import "./Header.css"
 function Header() {
   return (
     <div className="Heading">
-      <h3 className="ui header block red huge">Previous Year Papers,NIT KKRR</h3>
+      <h3 className="ui header block red huge">Student Study Resources, NIT KKR</h3>
     </div>
   );
 }

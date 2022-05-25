@@ -20,7 +20,7 @@ const Dropdowns = (props) => {
     if(search_query.branch === "" && search_query.endsem === null && search_query.query === "") {
       return
     }
-      axios.post("http://localhost:6969/search", search_query).then(async (res) => {
+      axios.post("https://iamahluwalia.herokuapp.com//search", search_query).then(async (res) => {
         await props.setQuery(res.data)
         if(res.data.length === 0) alert.error(`Found ${res.data.length} Files!`)
         else if(res.data.length === 1) alert.success(`Found ${res.data.length} File!`)

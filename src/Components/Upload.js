@@ -39,19 +39,19 @@ const PaperContainer = (props) => {
 
     function setTags(tags) {
       let str = tags.toLowerCase();
-      let arr = str.split(" ");
+      let arr = str.split(",");
       setFile({...file, tags: arr});
     }
 
     function sendOTP() {
-        axios.post('http://localhost:6969/saveotp', {email: file.owner}).then((res) => console.log(res)).then(() => setSent(true))
+        axios.post('https://iamahluwalia.herokuapp.com//saveotp', {email: file.owner}).then((res) => console.log(res)).then(() => setSent(true))
     }
 
     function verifyOTP() {
-        axios.post('http://localhost:6969/verifyotp', {email: file.owner, otp: otp}).then((res) => {
+        axios.post('https://iamahluwalia.herokuapp.com//verifyotp', {email: file.owner, otp: otp}).then((res) => {
           if(res.status === 200) {
             //upload
-            axios.post('http://localhost:6969/upload', file).then((res) => {
+            axios.post('https://iamahluwalia.herokuapp.com//upload', file).then((res) => {
             console.log(res)
           }).then(() => {
               props.setUpload(false)
