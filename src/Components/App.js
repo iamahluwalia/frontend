@@ -37,7 +37,7 @@ export default connect(mapStateToProps, undefined)(App);
 //   name,
 //   owner,
 //   branch,
-//   endsem,
+//   type,
 //   code,
 //   date,
 //   avgrating,
