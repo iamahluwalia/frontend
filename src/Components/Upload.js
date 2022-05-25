@@ -47,21 +47,14 @@ const PaperContainer = (props) => {
     }
 
     function sendOTP() {
-<<<<<<< HEAD
-        axios.post('https://iamahluwalia.herokuapp.com//saveotp', {email: file.owner}).then((res) => console.log(res)).then(() => setSent(true))
-=======
-        axios.post('http://localhost:6969/saveotp', {email: file.owner}).then(() => {
-          setSent(true);
-          alert.success("OTP Sent!")
-        })
->>>>>>> 294b59423c64ad947b0dcc77ddfe66499aeedbc3
+        axios.post('https://iamahluwalia.herokuapp.com/saveotp', {email: file.owner}).then((res) => console.log(res)).then(() => setSent(true))
     }
 
     function verifyOTP() {
-        axios.post('https://iamahluwalia.herokuapp.com//verifyotp', {email: file.owner, otp: otp}).then((res) => {
+        axios.post('https://iamahluwalia.herokuapp.com/verifyotp', {email: file.owner, otp: otp}).then((res) => {
           if(res.status === 200) {
             //upload
-            axios.post('https://iamahluwalia.herokuapp.com//upload', file).then((res) => {
+            axios.post('https://iamahluwalia.herokuapp.com/upload', file).then((res) => {
             console.log(res)
           }).then(() => {
               props.setUpload(false);

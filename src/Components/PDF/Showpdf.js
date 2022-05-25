@@ -17,14 +17,14 @@ function MyApp(props) {
   }
 
   const handleDownload = () => {
-    axios.post(`https://iamahluwalia.herokuapp.com//download`, {
+    axios.post(`https://iamahluwalia.herokuapp.com/download`, {
       _id: props.sel._id
     });
   }
 
   const sendRating = () => {
     console.log(props.sel)
-    axios.post(`https://iamahluwalia.herokuapp.com//rate`, {
+    axios.post(`https://iamahluwalia.herokuapp.com/rate`, {
       rating: rating,
       email: email,
       _id: props.sel._id
