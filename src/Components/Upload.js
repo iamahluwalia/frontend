@@ -76,9 +76,9 @@ const PaperContainer = (props) => {
         <br />
         <input type="search" placeholder='Enter name' id="form1" className="form-control" onChange={(e) => setFile({...file, name: e.target.value})} />
         <br />
-        <input type="search" placeholder='Enter branch' id="form1" className="form-control" onChange={(e) => setFile({...file, branch: e.target.value})} />
+        <input type="search" placeholder='Enter branch(CS/ECE/MECH/PIE/IT/EE)' id="form1" className="form-control" onChange={(e) => setFile({...file, branch: e.target.value})} />
         <br />
-        <input type="search" placeholder='Enter tags' id="form1" className="form-control" onChange={(e) => setTags(e.target.value)} />
+        <input type="search" placeholder='Enter tags(comma seperated values)' id="form1" className="form-control" onChange={(e) => setTags(e.target.value)} />
         <br />
         <input type="search" placeholder='Enter code' id="form1" className="form-control" onChange={(e) => setFile({...file, code: e.target.value})} />
         <br />

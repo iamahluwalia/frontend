@@ -7,11 +7,12 @@ import { connect } from 'react-redux';
 import CustomNavigation from './Navigation';
 import Swal from 'sweetalert2'
 
+var reg = new RegExp('[a-zA-Z]+@nitkkr\.ac\.in')
 
 function MyApp(props) {
   const [rating, setRating] = useState(0);
   const [email, setEmail] = useState("");
-
+  const [isCorrrect, setIsCorrect] = useState(true);
   const ratingChanged = (rat) => {
     setRating(rat);
   }
@@ -23,6 +24,14 @@ function MyApp(props) {
   }
 
   const sendRating = () => {
+    if(!isCorrrect) {
+      return Swal.fire({
+        title: 'Error!',
+        text: 'Enter Correct Email id',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
+    }
     console.log(props.sel)
     axios.post(`https://iamahluwalia.herokuapp.com/rate`, {
       rating: rating,
@@ -38,6 +47,16 @@ function MyApp(props) {
           })
         }
     })
+  }
+
+  const verifyEmail = (s) => {
+    console.log(s)
+    if(!reg.test(s)) {
+      setIsCorrect(false);
+    } else {
+      setIsCorrect(true);
+    }
+    setEmail(s);
   }
   
     return (
@@ -81,7 +100,8 @@ function MyApp(props) {
         </div>
         <br />
         <span>E-mail:</span>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input value={email} onChange={(e) => verifyEmail(e.target.value)} />
+        {!isCorrrect && <p style={{color: "red"}} >Enter correct email</p>}
         <br />
         <br />
         <button className="btn btn-primary" onClick={sendRating} >Submit</button>

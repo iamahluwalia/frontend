@@ -36,7 +36,7 @@ const Dropdowns = (props) => {
   const options1 = ["CS", "ECE", "MECH", "PIE", "IT", "EE"];
   const options2 = ["Midsem", "Endsem", "Notes", "Book Recommendations"];
   const Branch = "Branch";
-  const Sem = "Sem";
+  const Sem = "Type";
   return (
       <div className="dropdown-container">
         <div className="dropdown-comp">
